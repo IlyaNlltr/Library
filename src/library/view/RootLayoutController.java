@@ -1,5 +1,7 @@
 package library.view;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import library.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -7,6 +9,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * The controller for the root layout. The root layout provides the basic
@@ -14,6 +17,8 @@ import java.io.File;
  * elements can be placed.
  */
 public class RootLayoutController {
+
+
 
     // Reference to the main application
     private MainApp mainApp;
@@ -118,5 +123,6 @@ public class RootLayoutController {
     /**
      * Opens the birthday statistics.
      */
+
 
 }

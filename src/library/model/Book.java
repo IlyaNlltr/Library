@@ -2,14 +2,14 @@ package library.model;
 
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
-
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.swing.text.Element;
 import javax.swing.text.html.ImageView;
 import java.io.InputStream;
 
 /**
  * Model class for a Book.
- */
+ * */
 public class Book {
 
     private final StringProperty bookName;
@@ -18,7 +18,7 @@ public class Book {
     private final StringProperty genre;
     private final StringProperty pubHouse;
     private final StringProperty descr;
-    private Image img; ////////////////////////////////////
+    //private Image img; ////////////////////////////////////
 
 
     /**
@@ -31,8 +31,6 @@ public class Book {
     /**
      * Constructor with some initial data.
      *
-     * @param bookName
-     * @param author
      */
     public Book(String bookName, String author, String genre, Integer year, String pupHouse) {
         this.bookName = new SimpleStringProperty(bookName);
@@ -41,7 +39,7 @@ public class Book {
         this.year = new SimpleIntegerProperty(year);
         this.pubHouse = new SimpleStringProperty(pupHouse);
         this.descr = new SimpleStringProperty("");
-        this.img = new Image("");
+       // this.img = new Image("");/////////////////////////////////////
 
         // Some initial dummy data, just for convenient testing.
         // this.year = new SimpleIntegerProperty(1234);
@@ -122,11 +120,11 @@ public class Book {
         this.descr.set(descr);
     }
 
-    public Image getImg() {
-        return img;
-    }
+//   public Image getImg() {
+//       return img;
+//   }
 
-    public void setImg(Image img) {
-        this.img = img;
-    }
+//   public void setImg(Image img) {
+//       this.img = img;
+//   }
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="1200.0" stylesheets="@DarkTheme.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="library.view.BookOverviewController">
+<AnchorPane prefHeight="550.0" prefWidth="1200.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.BookOverviewController">
 <!--    xmlns="http://javafx.com/javafx/8.0.111"-->
     <children>
       <SplitPane dividerPositions="0.6913827655310621" layoutX="153.0" layoutY="70.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -83,7 +83,7 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </GridPane>
-                  <ButtonBar layoutX="-4.0" layoutY="559.0" prefHeight="38.0" prefWidth="336.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0">
+                  <ButtonBar layoutX="-4.0" layoutY="559.0" prefHeight="43.0" prefWidth="356.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0">
                     <buttons>
                       <Button maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleNewBook" prefHeight="25.0" prefWidth="120.0" text="New..." />
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleEditBook" prefHeight="25.0" prefWidth="120.0" text="Edit..." />

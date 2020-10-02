@@ -33,7 +33,7 @@ public class MainApp extends Application {
     /**
      * The data as an observable list of Persons.
      */
-    private ObservableList<Book> bookData = FXCollections.observableArrayList();
+    private final ObservableList<Book> bookData = FXCollections.observableArrayList();      ////////////////////////////finale
 
 
     /**
@@ -81,8 +81,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class
-                    .getResource("view/RootLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
             // Show the scene containing the root layout.

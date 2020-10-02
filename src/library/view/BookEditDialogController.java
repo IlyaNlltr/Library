@@ -9,10 +9,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import Pdf2Dom.*;
-import org.apache.pdfbox.pdmodel.PDDocument;
+//import org.apache.pdfbox.pdmodel.PDDocument;
+//import org.apache.pdfbox.rendering.ImageType;
+//import org.apache.pdfbox.rendering.PDFRenderer;
+//import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 
 /**
@@ -32,8 +36,8 @@ public class BookEditDialogController {
     private TextField pubHouseField;
     @FXML
     private TextArea descrField;
-    @FXML
-    private ImageView imgField;    //////////////////////
+   // @FXML
+   // private ImageView imgField;    //////////////////////
 
 
     private Stage dialogStage;
@@ -57,8 +61,6 @@ public class BookEditDialogController {
         this.dialogStage = dialogStage;
         descrField.setWrapText(true);
 
-
-
         // Set the dialog icon.
         this.dialogStage.getIcons().add(new Image("file:resources/images/edit.png"));
     }
@@ -73,11 +75,11 @@ public class BookEditDialogController {
 
         bookNameField.setText(book.getBookName());
         authorField.setText(book.getAuthor());
-        yearField.setText(String.valueOf(book.getYear()));
+        yearField.setText(Integer.toString(book.getYear()));
         genreField.setText(book.getGenre());
         pubHouseField.setText(book.getPubHouse());
         descrField.setText(book.getDescr());
-        imgField.setImage(book.getImg());   ///////////////////
+        //imgField.setImage(book.getImg());   ///////////////////
 
     }
 
@@ -104,7 +106,7 @@ public class BookEditDialogController {
             book.setGenre(genreField.getText());
             book.setPubHouse(pubHouseField.getText());
             book.setDescr(descrField.getText());
-            book.setImg(imgField.getImage()); //////////////////////////////
+           // book.setImg(imgField.getImage()); //////////////////////////////
 
 
             okClicked = true;
@@ -174,10 +176,19 @@ public class BookEditDialogController {
 
 
 
-    @FXML
-    private void handleAddImg(){
-
-    }
+  //  @FXML
+  //  private void handleAddImg() throws IOException {
+  //      PDDocument document = PDDocument.load(new File(filename));
+  //      PDFRenderer pdfRenderer = new PDFRenderer(document);
+  //      for (int page = 0; page < document.getNumberOfPages(); ++page) {
+  //          BufferedImage bim = pdfRenderer.renderImageWithDPI(
+  //                  page, 300, ImageType.RGB);
+  //          ImageIOUtil.writeImage(
+  //                  bim, String.format("src/output/pdf-%d.%s", page + 1, extension), 300);
+  //      }
+  //      document.close();
+//
+  //  }
 
 
 
