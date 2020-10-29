@@ -1,10 +1,10 @@
-package library;
+package demo.library;
 
-import library.model.Book;
-import library.model.BookListWrapper;
-import library.view.BookEditDialogController;
-import library.view.BookOverviewController;
-import library.view.RootLayoutController;
+import demo.library.model.Book;
+import demo.library.model.BookListWrapper;
+import demo.library.view.BookEditDialogController;
+import demo.library.view.BookOverviewController;
+import demo.library.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +22,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.prefs.Preferences;
 
@@ -39,10 +40,11 @@ public class MainApp extends Application {
     /**
      * Constructor
      */
-    public MainApp() {
+    public MainApp() throws FileNotFoundException {
 
         // Add some sample data
         bookData.add(new Book("Война и мир", "Muster", "фентези", 1995, "домина"));
+
         bookData.add(new Book("Мир и война", "Mueller", "фентези", 1995, "домина"));
 
     }
@@ -62,6 +64,7 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Library");
         this.primaryStage.setWidth(1200);
         this.primaryStage.setHeight(600);
+
 
 
         // Set the application icon.
@@ -197,12 +200,12 @@ public class MainApp extends Application {
             prefs.put("filePath", file.getPath());
 
             // Update the stage title.
-            primaryStage.setTitle("AddressApp - " + file.getName());          ///////////////////////////////////////////
+            primaryStage.setTitle("LibraryApp - " + file.getName());          ///////////////////////////////////////////
         } else {
             prefs.remove("filePath");
 
             // Update the stage title.
-            primaryStage.setTitle("AddressApp");
+            primaryStage.setTitle("LibraryApp");
         }
     }
 

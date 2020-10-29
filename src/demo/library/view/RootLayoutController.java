@@ -1,15 +1,12 @@
-package library.view;
+package demo.library.view;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.Pane;
-import library.MainApp;
+import demo.library.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * The controller for the root layout. The root layout provides the basic

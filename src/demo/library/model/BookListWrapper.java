@@ -1,4 +1,4 @@
-package library.model;
+package demo.library.model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

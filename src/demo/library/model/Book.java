@@ -1,15 +1,15 @@
-package library.model;
+package demo.library.model;
 
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import javax.swing.text.Element;
-import javax.swing.text.html.ImageView;
-import java.io.InputStream;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * Model class for a Book.
- * */
+ */
+
 public class Book {
 
     private final StringProperty bookName;
@@ -18,28 +18,58 @@ public class Book {
     private final StringProperty genre;
     private final StringProperty pubHouse;
     private final StringProperty descr;
-    //private Image img; ////////////////////////////////////
+    private Image image;//было
+    //private Image file;
 
+
+
+    //Image image = new Image(getClass().getResourceAsStream("/images/cards/Ad.png"));
+
+    //File file = new File("resouses/images/bookLogo.png");            //это тут было
+
+
+
+
+
+  // Image image = new Image("file:resouses/images/bookLogo.png");
+  // int w = (int)image.getWidth();
+  // int h = (int)image.getHeight();
+  // Image tile = new WritableImage(image.getPixelReader(), w, h);
+
+
+
+    //byte[] buf = new byte[w * h * 4];
+    //image.getPixelReader().getPixels(0, 0,w, h, PixelFormat.getByteBgraInstance(), buf, 0, w * 4);
+
+    //Image image = new Image(file.toURI().toString());
+
+    //FileInputStream inputStream = new FileInputStream("/images/logo.jpg");
+    //Image image = new Image("/images/logo.jpg");
 
     /**
      * Default constructor.
      */
-    public Book() {
+    public Book() throws FileNotFoundException {
         this(null, null, null, 0, null);
     }
 
     /**
      * Constructor with some initial data.
-     *
      */
-    public Book(String bookName, String author, String genre, Integer year, String pupHouse) {
+    public Book(String bookName, String author, String genre, Integer year, String pupHouse) throws FileNotFoundException {
         this.bookName = new SimpleStringProperty(bookName);
         this.author = new SimpleStringProperty(author);
         this.genre = new SimpleStringProperty(genre);
         this.year = new SimpleIntegerProperty(year);
         this.pubHouse = new SimpleStringProperty(pupHouse);
         this.descr = new SimpleStringProperty("");
-       // this.img = new Image("");/////////////////////////////////////
+        //this.image = new Image(file.toURI().toString());   //было тут
+        this.image = new Image(new FileInputStream("resouses/images/bookLogo.png"));
+        System.out.println(image);
+        //System.out.println(image);
+
+
+        //this.img = new Image("file:resources/images/logo.jpg");/////////////////////////////////////
 
         // Some initial dummy data, just for convenient testing.
         // this.year = new SimpleIntegerProperty(1234);
@@ -120,11 +150,20 @@ public class Book {
         this.descr.set(descr);
     }
 
-//   public Image getImg() {
-//       return img;
-//   }
+    public Image getImage() {
+        return image;
+    }
 
-//   public void setImg(Image img) {
-//       this.img = img;
-//   }
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+
+ // public File getFile() {
+ //     return file;
+ // }
+
+ // public void setFile(File file) {
+ //     this.file = file;
+ // }
 }

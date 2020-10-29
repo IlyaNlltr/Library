@@ -1,13 +1,19 @@
-package library.view;
+package demo.library.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import library.MainApp;
-import library.model.Book;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import demo.library.MainApp;
+import demo.library.model.Book;
+
+import java.io.*;
+
+import java.io.File;
 
 
-public class BookOverviewController {
+public class BookOverviewController   {
     @FXML
     private TableView<Book> bookTable;
     @FXML
@@ -33,6 +39,8 @@ public class BookOverviewController {
     private Label pubHouseLabel;
     @FXML
     private TextArea descrLabel;
+    @FXML
+    private ImageView imgLabel;
 
     // Reference to the main application.
     private MainApp mainApp;
@@ -41,7 +49,11 @@ public class BookOverviewController {
      * The constructor.
      * The constructor is called before the initialize() method.
      */
-    public BookOverviewController() {
+    public BookOverviewController () {
+      //  InputStream inStream = getClass().getResourceAsStream("analog.png");
+      //  Image imageObject = new Image(inStream);
+      //  ImageView imgLabel = new ImageView(imageObject);
+
     }
 
     /**
@@ -64,6 +76,8 @@ public class BookOverviewController {
         // Listen for selection changes and show the person details when changed.
         bookTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showBookDetails(newValue));
+
+
     }
 
     /**
@@ -93,6 +107,13 @@ public class BookOverviewController {
             yearLabel.setText(Integer.toString(book.getYear()));
             pubHouseLabel.setText(book.getPubHouse());
             descrLabel.setText(book.getDescr());
+
+
+            imgLabel.setImage(book.getImage()); //було тут
+            //imgLabel.setImage(book.getFile());
+
+
+
             descrLabel.setWrapText(true);
         } else {
             // Book is null, remove all the text.
@@ -102,6 +123,13 @@ public class BookOverviewController {
             yearLabel.setText("");
             pubHouseLabel.setText("");
             descrLabel.setText("");
+
+            File file = new File("resouses/images/logo.jpg");
+            Image image = new Image(file.toURI().toString());
+            imgLabel.setImage(image);
+
+
+
         }
     }
 
@@ -130,7 +158,7 @@ public class BookOverviewController {
      * details for a new person.
      */
     @FXML
-    private void handleNewBook() {
+    private void handleNewBook() throws FileNotFoundException {
         Book tempBook = new Book();
         boolean okClicked = mainApp.showBookEditDialog(tempBook);
         if (okClicked) {
@@ -162,4 +190,5 @@ public class BookOverviewController {
             alert.showAndWait();
         }
     }
+
 }

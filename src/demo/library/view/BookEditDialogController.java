@@ -1,7 +1,8 @@
-package library.view;
+package demo.library.view;
 
 import javafx.scene.image.ImageView;
-import library.model.Book;
+import javafx.stage.FileChooser;
+import demo.library.model.Book;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -13,8 +14,11 @@ import javafx.stage.Stage;
 //import org.apache.pdfbox.rendering.ImageType;
 //import org.apache.pdfbox.rendering.PDFRenderer;
 //import org.apache.pdfbox.tools.imageio.ImageIOUtil;
+//import org.apache.pdfbox.pdmodel.PDDocument;
+//import org.apache.pdfbox.rendering.ImageType;
+//import org.apache.pdfbox.rendering.PDFRenderer;
+//import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
@@ -36,8 +40,8 @@ public class BookEditDialogController {
     private TextField pubHouseField;
     @FXML
     private TextArea descrField;
-   // @FXML
-   // private ImageView imgField;    //////////////////////
+    @FXML
+    private ImageView imgField;    //////////////////////
 
 
     private Stage dialogStage;
@@ -51,7 +55,9 @@ public class BookEditDialogController {
      */
     @FXML
     private void initialize() {
-
+       // File file = new File("resouses/images/logo.jpg");
+       // Image image = new Image(file.toURI().toString());
+       // imgField.setImage(image);
     }
 
     /**
@@ -79,24 +85,42 @@ public class BookEditDialogController {
         genreField.setText(book.getGenre());
         pubHouseField.setText(book.getPubHouse());
         descrField.setText(book.getDescr());
-        //imgField.setImage(book.getImg());   ///////////////////
+        imgField.setImage(book.getImage()); //было
+        //imgField.setImage(new Image("resouses/images/bookLogo.png"));
+
+
+
 
     }
 
     /**
      * Returns true if the user clicked OK, false otherwise.
      *
-     * @return
+     * @return     
      */
     public boolean isOkClicked() {
         return okClicked;
     }
 
+
+
+    @FXML
+    private void handleAddImg() throws IOException {
+
+        FileChooser chooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png", "*.bmp");
+        chooser.getExtensionFilters().add(extFilter);
+        chooser.setTitle("Open File");
+        File firstP = chooser.showOpenDialog(new Stage());
+        Image img = new Image(firstP.toURI().toString());
+        imgField.setImage(img);
+    }
+
+
     /**
      * Called when the user clicks ok.
      */
-
-
     @FXML
     private void handleOk() {
         if (isInputValid()) {
@@ -106,7 +130,7 @@ public class BookEditDialogController {
             book.setGenre(genreField.getText());
             book.setPubHouse(pubHouseField.getText());
             book.setDescr(descrField.getText());
-           // book.setImg(imgField.getImage()); //////////////////////////////
+            book.setImage(imgField.getImage()); //////////////////////////////
 
 
             okClicked = true;
@@ -175,10 +199,9 @@ public class BookEditDialogController {
 
 
 
-
   //  @FXML
   //  private void handleAddImg() throws IOException {
-  //      PDDocument document = PDDocument.load(new File(filename));
+  //      PDDocument document = PDDocument.load(new File("F:/Zaochka/DIPLOMstech.pdf"));
   //      PDFRenderer pdfRenderer = new PDFRenderer(document);
   //      for (int page = 0; page < document.getNumberOfPages(); ++page) {
   //          BufferedImage bim = pdfRenderer.renderImageWithDPI(
@@ -187,7 +210,7 @@ public class BookEditDialogController {
   //                  bim, String.format("src/output/pdf-%d.%s", page + 1, extension), 300);
   //      }
   //      document.close();
-//
+  //
   //  }
 
 
