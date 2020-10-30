@@ -18,6 +18,7 @@ public class Book {
     private final StringProperty genre;
     private final StringProperty pubHouse;
     private final StringProperty descr;
+    private final StringProperty bookFile;
     private Image image;//было
     //private Image file;
 
@@ -50,23 +51,24 @@ public class Book {
      * Default constructor.
      */
     public Book() throws FileNotFoundException {
-        this(null, null, null, 0, null);
+        this(null, null, null, 0, null, null);
     }
 
     /**
      * Constructor with some initial data.
      */
-    public Book(String bookName, String author, String genre, Integer year, String pupHouse) throws FileNotFoundException {
+    public Book(String bookName, String author, String genre, Integer year, String pupHouse, String bookFile) throws FileNotFoundException {
         this.bookName = new SimpleStringProperty(bookName);
         this.author = new SimpleStringProperty(author);
         this.genre = new SimpleStringProperty(genre);
         this.year = new SimpleIntegerProperty(year);
         this.pubHouse = new SimpleStringProperty(pupHouse);
         this.descr = new SimpleStringProperty("");
+        this.bookFile = new SimpleStringProperty(bookFile);
         //this.image = new Image(file.toURI().toString());   //было тут
         this.image = new Image(new FileInputStream("resouses/images/bookLogo.png"));
-        System.out.println(image);
         //System.out.println(image);
+
 
 
         //this.img = new Image("file:resources/images/logo.jpg");/////////////////////////////////////
@@ -158,8 +160,19 @@ public class Book {
         this.image = image;
     }
 
+    public String getBookFile() {
+        return bookFile.get();
+    }
 
- // public File getFile() {
+    public StringProperty bookFileProperty() {
+        return bookFile;
+    }
+
+    public void setBookFile(String bookFile) {
+        this.bookFile.set(bookFile);
+    }
+
+    // public File getFile() {
  //     return file;
  // }
 

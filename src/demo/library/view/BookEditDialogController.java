@@ -1,5 +1,7 @@
 package demo.library.view;
 
+import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import demo.library.model.Book;
@@ -19,6 +21,7 @@ import javafx.stage.Stage;
 //import org.apache.pdfbox.rendering.PDFRenderer;
 //import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
@@ -40,6 +43,10 @@ public class BookEditDialogController {
     private TextField pubHouseField;
     @FXML
     private TextArea descrField;
+
+    @FXML
+    private TextField bookFileField;
+
     @FXML
     private ImageView imgField;    //////////////////////
 
@@ -86,6 +93,7 @@ public class BookEditDialogController {
         pubHouseField.setText(book.getPubHouse());
         descrField.setText(book.getDescr());
         imgField.setImage(book.getImage()); //было
+        bookFileField.setText(book.getBookFile());
         //imgField.setImage(new Image("resouses/images/bookLogo.png"));
 
 
@@ -101,6 +109,11 @@ public class BookEditDialogController {
     public boolean isOkClicked() {
         return okClicked;
     }
+
+
+
+
+
 
 
 
@@ -130,6 +143,7 @@ public class BookEditDialogController {
             book.setGenre(genreField.getText());
             book.setPubHouse(pubHouseField.getText());
             book.setDescr(descrField.getText());
+            book.setBookFile(bookFileField.getText());
             book.setImage(imgField.getImage()); //////////////////////////////
 
 
@@ -197,9 +211,33 @@ public class BookEditDialogController {
         }
     }
 
+    @FXML
+    private void handleAddFile() throws IOException {
+
+        FileChooser chooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("Book files", "*.pdf", "*.djvu", "*.docx");
+        chooser.getExtensionFilters().add(extFilter);
+        chooser.setTitle("Open File");
+        File bookFile1 = chooser.showOpenDialog(new Stage());
+        String bookfile = bookFile1.toURI().toString();
+        /////////////todo
+        bookFileField.setText(bookfile);
+    }
+
+//    @FXML
+//    private void handleOpenBook() throws IOException {
+//         //если вы хотите запустить это на другой ОС, вам придется использовать Desktop API
+//        //Runtime.getRuntime().exec("explorer.exe /select," + bookFileField.getText());
+//        Process p = new ProcessBuilder("explorer.exe", "/select,"+bookFileField.getText()).start();
 
 
-  //  @FXML
+        //System.out.println("привет "+bookFileField.getText());
+
+//    }
+
+
+    //  @FXML
   //  private void handleAddImg() throws IOException {
   //      PDDocument document = PDDocument.load(new File("F:/Zaochka/DIPLOMstech.pdf"));
   //      PDFRenderer pdfRenderer = new PDFRenderer(document);

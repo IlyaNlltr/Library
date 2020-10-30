@@ -43,9 +43,9 @@ public class MainApp extends Application {
     public MainApp() throws FileNotFoundException {
 
         // Add some sample data
-        bookData.add(new Book("Война и мир", "Muster", "фентези", 1995, "домина"));
+        bookData.add(new Book("Война и мир", "Muster", "фентези", 1995, "домина", "erfref"));
 
-        bookData.add(new Book("Мир и война", "Mueller", "фентези", 1995, "домина"));
+        bookData.add(new Book("Мир и война", "Mueller", "фентези", 1995, "домина","erf"));
 
     }
 

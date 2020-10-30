@@ -38,12 +38,17 @@ public class BookOverviewController   {
     @FXML
     private Label pubHouseLabel;
     @FXML
+    private Label pathLabel;
+
+    @FXML
     private TextArea descrLabel;
+
     @FXML
     private ImageView imgLabel;
 
     // Reference to the main application.
     private MainApp mainApp;
+
 
     /**
      * The constructor.
@@ -107,6 +112,8 @@ public class BookOverviewController   {
             yearLabel.setText(Integer.toString(book.getYear()));
             pubHouseLabel.setText(book.getPubHouse());
             descrLabel.setText(book.getDescr());
+            pathLabel.setText(book.getBookFile());
+
 
 
             imgLabel.setImage(book.getImage()); //було тут
@@ -123,6 +130,7 @@ public class BookOverviewController   {
             yearLabel.setText("");
             pubHouseLabel.setText("");
             descrLabel.setText("");
+            pathLabel.setText("");
 
             File file = new File("resouses/images/logo.jpg");
             Image image = new Image(file.toURI().toString());
@@ -190,5 +198,16 @@ public class BookOverviewController   {
             alert.showAndWait();
         }
     }
+
+  @FXML
+  private void handleOpenFileBook() throws IOException {
+
+      //Runtime.getRuntime().exec("explorer.exe /select," + tempFileBook.getBookFile().toString());
+      Process p = new ProcessBuilder("explorer.exe", "/select,"+pathLabel.getText()).start();
+
+      System.out.println("привет  "+pathLabel.getText());
+      System.out.println("привет  "+authorLabel.getText());
+
+  }
 
 }
