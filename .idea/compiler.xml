@@ -17,16 +17,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Library" />
+        <module name="LibraryApp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Library" target="1.8" />
+      <module name="Library" target="1.5" />
+      <module name="LibraryApp" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Library" options="-parameters" />
+      <module name="Library" options="" />
     </option>
   </component>
 </project>

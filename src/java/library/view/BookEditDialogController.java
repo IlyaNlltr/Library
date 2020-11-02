@@ -1,10 +1,8 @@
-package demo.library.view;
+package library.view;
 
-import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import demo.library.model.Book;
+import library.model.Book;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -21,7 +19,6 @@ import javafx.stage.Stage;
 //import org.apache.pdfbox.rendering.PDFRenderer;
 //import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
@@ -144,7 +141,7 @@ public class BookEditDialogController {
             book.setPubHouse(pubHouseField.getText());
             book.setDescr(descrField.getText());
             book.setBookFile(bookFileField.getText());
-            book.setImage(imgField.getImage()); //////////////////////////////
+            //book.setImage(imgField.getImage()); ////////////////////////////// todo
 
 
             okClicked = true;
@@ -225,16 +222,12 @@ public class BookEditDialogController {
         bookFileField.setText(bookfile);
     }
 
-//    @FXML
-//    private void handleOpenBook() throws IOException {
-//         //если вы хотите запустить это на другой ОС, вам придется использовать Desktop API
-//        //Runtime.getRuntime().exec("explorer.exe /select," + bookFileField.getText());
-//        Process p = new ProcessBuilder("explorer.exe", "/select,"+bookFileField.getText()).start();
-
-
-        //System.out.println("привет "+bookFileField.getText());
-
-//    }
+    @FXML
+    private void handleOpenBook() throws IOException {
+         //если вы хотите запустить это на другой ОС, вам придется использовать Desktop API
+        //Runtime.getRuntime().exec("explorer.exe /select," + bookFileField.getText());
+        Process p = new ProcessBuilder("explorer.exe", "/select,"+bookFileField.getText()).start();
+    }
 
 
     //  @FXML

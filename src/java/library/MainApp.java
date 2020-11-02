@@ -1,10 +1,5 @@
-package demo.library;
+package library;
 
-import demo.library.model.Book;
-import demo.library.model.BookListWrapper;
-import demo.library.view.BookEditDialogController;
-import demo.library.view.BookOverviewController;
-import demo.library.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +12,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import library.model.Book;
+import library.model.BookListWrapper;
+import library.view.BookEditDialogController;
+import library.view.BookOverviewController;
+import library.view.RootLayoutController;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -25,6 +25,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.prefs.Preferences;
+
+//import main.java.library.view.RootLayoutController;
 
 public class MainApp extends Application {
 
@@ -68,7 +70,7 @@ public class MainApp extends Application {
 
 
         // Set the application icon.
-        this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png")); /////////////////////////////////////////////
+        //this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png")); /////////////////////////////////////////////todo
 
         initRootLayout();
 
@@ -172,10 +174,6 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns the person file preference, i.e. the file that was last opened.
-     * The preference is read from the OS specific registry. If no such
-     * preference can be found, null is returned.
-     *
      * @return
      */
     public File getBookFilePath() {
@@ -189,9 +187,6 @@ public class MainApp extends Application {
     }
 
     /**
-     * Sets the file path of the currently loaded file. The path is persisted in
-     * the OS specific registry.
-     *
      * @param file the file or null to remove the path
      */
     public void setBookFilePath(File file) {
@@ -200,7 +195,7 @@ public class MainApp extends Application {
             prefs.put("filePath", file.getPath());
 
             // Update the stage title.
-            primaryStage.setTitle("LibraryApp - " + file.getName());          ///////////////////////////////////////////
+            primaryStage.setTitle("LibraryApp - " + file.getName());
         } else {
             prefs.remove("filePath");
 
@@ -284,3 +279,6 @@ public class MainApp extends Application {
         launch(args);
     }
 }
+
+
+

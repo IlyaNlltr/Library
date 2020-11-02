@@ -1,4 +1,4 @@
-package demo.library.model;
+package library.model;
 
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
@@ -66,7 +66,7 @@ public class Book {
         this.descr = new SimpleStringProperty("");
         this.bookFile = new SimpleStringProperty(bookFile);
         //this.image = new Image(file.toURI().toString());   //было тут
-        this.image = new Image(new FileInputStream("resouses/images/bookLogo.png"));
+        //this.image = new Image(new FileInputStream("src/java/resouses/images/bookLogo.png"));           ///////////////////////////////////
         //System.out.println(image);
 
 

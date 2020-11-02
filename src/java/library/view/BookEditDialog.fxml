@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="500.0" styleClass="background"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo.library.view.BookEditDialogController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="500.0" styleClass="background"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.BookEditDialogController">
 <!--  stylesheets="@DarkTheme.css" -->
     <children>
       <GridPane layoutX="12.0" layoutY="28.0" prefHeight="136.0" prefWidth="478.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="200.0">
@@ -57,7 +57,7 @@
       <Button layoutX="100.0" layoutY="544.0" mnemonicParsing="false" onAction="#handleAddImg" prefHeight="34.0" prefWidth="120.0" text="Add img" />
       <ImageView fx:id="imgField" fitHeight="119.0" fitWidth="127.0" layoutX="189.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="14.0" layoutY="544.0" mnemonicParsing="false" onAction="#handleAddFile" prefHeight="34.0" prefWidth="84.0" text="Add file" />
-<!--      <Button layoutX="14.0" layoutY="492.0" mnemonicParsing="false" onAction="#handleOpenBook" prefHeight="34.0" prefWidth="84.0" text="OpenBook" />-->
+      <Button layoutX="14.0" layoutY="492.0" mnemonicParsing="false" onAction="#handleOpenBook" prefHeight="34.0" prefWidth="84.0" text="OpenBook" />
       <TextField fx:id="bookFileField" layoutX="123.0" layoutY="497.0" prefHeight="25.0" prefWidth="367.0" />
    </children>
 </AnchorPane>

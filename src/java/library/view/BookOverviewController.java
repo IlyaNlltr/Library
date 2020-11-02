@@ -1,16 +1,13 @@
-package demo.library.view;
+package library.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import demo.library.MainApp;
-import demo.library.model.Book;
+import library.MainApp;
+import library.model.Book;
 
 import java.io.*;
-
-import java.io.File;
 
 
 public class BookOverviewController   {
@@ -132,9 +129,9 @@ public class BookOverviewController   {
             descrLabel.setText("");
             pathLabel.setText("");
 
-            File file = new File("resouses/images/logo.jpg");
-            Image image = new Image(file.toURI().toString());
-            imgLabel.setImage(image);
+            //File file = new File("/images/logo.jpg");    todo
+            //Image image = new Image(file.toURI().toString());
+            //imgLabel.setImage(image);
 
 
 
@@ -201,13 +198,8 @@ public class BookOverviewController   {
 
   @FXML
   private void handleOpenFileBook() throws IOException {
-
       //Runtime.getRuntime().exec("explorer.exe /select," + tempFileBook.getBookFile().toString());
       Process p = new ProcessBuilder("explorer.exe", "/select,"+pathLabel.getText()).start();
-
-      System.out.println("привет  "+pathLabel.getText());
-      System.out.println("привет  "+authorLabel.getText());
-
   }
 
 }

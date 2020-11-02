@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="1200.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo.library.view.BookOverviewController">
+<AnchorPane prefHeight="550.0" prefWidth="1200.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.view.BookOverviewController">
 <!-- stylesheets="@DarkTheme.css"
 xmlns="http://javafx.com/javafx/8.0.111"-->
     <children>

@@ -1,4 +1,4 @@
-package demo.library.model;
+package library.model;
 
 public class ImageAdapter {
 }
