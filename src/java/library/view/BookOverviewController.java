@@ -10,7 +10,7 @@ import library.model.Book;
 import java.io.*;
 
 
-public class BookOverviewController   {
+public class BookOverviewController {
     @FXML
     private TableView<Book> bookTable;
     @FXML
@@ -40,9 +40,6 @@ public class BookOverviewController   {
     @FXML
     private TextArea descrLabel;
 
-    @FXML
-    private ImageView imgLabel;
-
     // Reference to the main application.
     private MainApp mainApp;
 
@@ -51,10 +48,7 @@ public class BookOverviewController   {
      * The constructor.
      * The constructor is called before the initialize() method.
      */
-    public BookOverviewController () {
-      //  InputStream inStream = getClass().getResourceAsStream("analog.png");
-      //  Image imageObject = new Image(inStream);
-      //  ImageView imgLabel = new ImageView(imageObject);
+    public BookOverviewController() {
 
     }
 
@@ -78,15 +72,8 @@ public class BookOverviewController   {
         // Listen for selection changes and show the person details when changed.
         bookTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showBookDetails(newValue));
-
-
     }
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
@@ -94,12 +81,6 @@ public class BookOverviewController   {
         bookTable.setItems(mainApp.getBookData());
     }
 
-    /**
-     * Fills all text fields to show details about the book.
-     * If the specified book is null, all text fields are cleared.
-     *
-     * @param book the book or null
-     */
     private void showBookDetails(Book book) {
         if (book != null) {
             // Fill the labels with info from the book object.
@@ -111,13 +92,6 @@ public class BookOverviewController   {
             descrLabel.setText(book.getDescr());
             pathLabel.setText(book.getBookFile());
 
-
-
-            imgLabel.setImage(book.getImage()); //було тут
-            //imgLabel.setImage(book.getFile());
-
-
-
             descrLabel.setWrapText(true);
         } else {
             // Book is null, remove all the text.
@@ -128,19 +102,9 @@ public class BookOverviewController   {
             pubHouseLabel.setText("");
             descrLabel.setText("");
             pathLabel.setText("");
-
-            //File file = new File("/images/logo.jpg");    todo
-            //Image image = new Image(file.toURI().toString());
-            //imgLabel.setImage(image);
-
-
-
         }
     }
 
-    /**
-     * Called when the user clicks on the delete button.
-     */
     @FXML
     private void handleDeleteBook() {
         int selectedIndex = bookTable.getSelectionModel().getSelectedIndex();
@@ -158,10 +122,6 @@ public class BookOverviewController   {
         }
     }
 
-    /**
-     * Called when the user clicks the new button. Opens a dialog to edit
-     * details for a new person.
-     */
     @FXML
     private void handleNewBook() throws FileNotFoundException {
         Book tempBook = new Book();
@@ -171,10 +131,6 @@ public class BookOverviewController   {
         }
     }
 
-    /**
-     * Called when the user clicks the edit button. Opens a dialog to edit
-     * details for the selected person.
-     */
     @FXML
     private void handleEditBook() {
         Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
@@ -196,10 +152,10 @@ public class BookOverviewController   {
         }
     }
 
-  @FXML
-  private void handleOpenFileBook() throws IOException {
-      //Runtime.getRuntime().exec("explorer.exe /select," + tempFileBook.getBookFile().toString());
-      Process p = new ProcessBuilder("explorer.exe", "/select,"+pathLabel.getText()).start();
-  }
+    @FXML
+    private void handleOpenFileBook() throws IOException {
+        //Runtime.getRuntime().exec("explorer.exe /select," + tempFileBook.getBookFile().toString());
+        Process p = new ProcessBuilder("explorer.exe", "/select," + pathLabel.getText()).start();
+    }
 
 }

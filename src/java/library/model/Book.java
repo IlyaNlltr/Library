@@ -3,7 +3,6 @@ package library.model;
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 /**
@@ -19,33 +18,6 @@ public class Book {
     private final StringProperty pubHouse;
     private final StringProperty descr;
     private final StringProperty bookFile;
-    private Image image;//было
-    //private Image file;
-
-
-
-    //Image image = new Image(getClass().getResourceAsStream("/images/cards/Ad.png"));
-
-    //File file = new File("resouses/images/bookLogo.png");            //это тут было
-
-
-
-
-
-  // Image image = new Image("file:resouses/images/bookLogo.png");
-  // int w = (int)image.getWidth();
-  // int h = (int)image.getHeight();
-  // Image tile = new WritableImage(image.getPixelReader(), w, h);
-
-
-
-    //byte[] buf = new byte[w * h * 4];
-    //image.getPixelReader().getPixels(0, 0,w, h, PixelFormat.getByteBgraInstance(), buf, 0, w * 4);
-
-    //Image image = new Image(file.toURI().toString());
-
-    //FileInputStream inputStream = new FileInputStream("/images/logo.jpg");
-    //Image image = new Image("/images/logo.jpg");
 
     /**
      * Default constructor.
@@ -57,7 +29,7 @@ public class Book {
     /**
      * Constructor with some initial data.
      */
-    public Book(String bookName, String author, String genre, Integer year, String pupHouse, String bookFile) throws FileNotFoundException {
+    public Book(String bookName, String author, String genre, Integer year, String pupHouse, String bookFile) {
         this.bookName = new SimpleStringProperty(bookName);
         this.author = new SimpleStringProperty(author);
         this.genre = new SimpleStringProperty(genre);
@@ -65,19 +37,6 @@ public class Book {
         this.pubHouse = new SimpleStringProperty(pupHouse);
         this.descr = new SimpleStringProperty("");
         this.bookFile = new SimpleStringProperty(bookFile);
-        //this.image = new Image(file.toURI().toString());   //было тут
-        //this.image = new Image(new FileInputStream("src/java/resouses/images/bookLogo.png"));           ///////////////////////////////////
-        //System.out.println(image);
-
-
-
-        //this.img = new Image("file:resources/images/logo.jpg");/////////////////////////////////////
-
-        // Some initial dummy data, just for convenient testing.
-        // this.year = new SimpleIntegerProperty(1234);
-        // this.genre = new SimpleStringProperty("some street");
-        // this.pubHouse = new SimpleStringProperty("some city");
-
     }
 
     public String getBookName() {
@@ -152,14 +111,6 @@ public class Book {
         this.descr.set(descr);
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
     public String getBookFile() {
         return bookFile.get();
     }
@@ -172,11 +123,4 @@ public class Book {
         this.bookFile.set(bookFile);
     }
 
-    // public File getFile() {
- //     return file;
- // }
-
- // public void setFile(File file) {
- //     this.file = file;
- // }
 }

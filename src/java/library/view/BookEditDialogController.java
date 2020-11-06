@@ -10,14 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-//import org.apache.pdfbox.pdmodel.PDDocument;
-//import org.apache.pdfbox.rendering.ImageType;
-//import org.apache.pdfbox.rendering.PDFRenderer;
-//import org.apache.pdfbox.tools.imageio.ImageIOUtil;
-//import org.apache.pdfbox.pdmodel.PDDocument;
-//import org.apache.pdfbox.rendering.ImageType;
-//import org.apache.pdfbox.rendering.PDFRenderer;
-//import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,29 +36,15 @@ public class BookEditDialogController {
     @FXML
     private TextField bookFileField;
 
-    @FXML
-    private ImageView imgField;    //////////////////////
-
 
     private Stage dialogStage;
     private Book book;
     private boolean okClicked = false;
 
-
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
     @FXML
     private void initialize() {
-       // File file = new File("resouses/images/logo.jpg");
-       // Image image = new Image(file.toURI().toString());
-       // imgField.setImage(image);
     }
 
-    /**
-     * Sets the stage of this dialog.
-     */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
         descrField.setWrapText(true);
@@ -75,11 +53,6 @@ public class BookEditDialogController {
         this.dialogStage.getIcons().add(new Image("file:resources/images/edit.png"));
     }
 
-    /**
-     * Sets the book to be edited in the dialog.
-     *
-     * @param book
-     */
     public void setBook(Book book) {
         this.book = book;
 
@@ -89,48 +62,13 @@ public class BookEditDialogController {
         genreField.setText(book.getGenre());
         pubHouseField.setText(book.getPubHouse());
         descrField.setText(book.getDescr());
-        imgField.setImage(book.getImage()); //было
         bookFileField.setText(book.getBookFile());
-        //imgField.setImage(new Image("resouses/images/bookLogo.png"));
-
-
-
-
     }
 
-    /**
-     * Returns true if the user clicked OK, false otherwise.
-     *
-     * @return     
-     */
     public boolean isOkClicked() {
         return okClicked;
     }
 
-
-
-
-
-
-
-
-    @FXML
-    private void handleAddImg() throws IOException {
-
-        FileChooser chooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png", "*.bmp");
-        chooser.getExtensionFilters().add(extFilter);
-        chooser.setTitle("Open File");
-        File firstP = chooser.showOpenDialog(new Stage());
-        Image img = new Image(firstP.toURI().toString());
-        imgField.setImage(img);
-    }
-
-
-    /**
-     * Called when the user clicks ok.
-     */
     @FXML
     private void handleOk() {
         if (isInputValid()) {
@@ -141,8 +79,6 @@ public class BookEditDialogController {
             book.setPubHouse(pubHouseField.getText());
             book.setDescr(descrField.getText());
             book.setBookFile(bookFileField.getText());
-            //book.setImage(imgField.getImage()); ////////////////////////////// todo
-
 
             okClicked = true;
             dialogStage.close();
@@ -166,13 +102,13 @@ public class BookEditDialogController {
         String errorMessage = "";
 
         if (bookNameField.getText() == null || bookNameField.getText().length() == 0) {
-            errorMessage += "No valid first name!\n";
+            errorMessage += "No valid book name!\n";
         }
         if (authorField.getText() == null || authorField.getText().length() == 0) {
-            errorMessage += "No valid last name!\n";
+            errorMessage += "No valid author!\n";
         }
         if (genreField.getText() == null || genreField.getText().length() == 0) {
-            errorMessage += "No valid street!\n";
+            errorMessage += "No valid genre!\n";
         }
 
         Calendar cal = Calendar.getInstance();
@@ -189,7 +125,7 @@ public class BookEditDialogController {
         }
 
         if (pubHouseField.getText() == null || pubHouseField.getText().length() == 0) {
-            errorMessage += "No valid city!\n";
+            errorMessage += "No valid pub house!\n";
         }
 
         if (errorMessage.length() == 0) {
@@ -218,32 +154,11 @@ public class BookEditDialogController {
         chooser.setTitle("Open File");
         File bookFile1 = chooser.showOpenDialog(new Stage());
         String bookfile = bookFile1.toURI().toString();
-        /////////////todo
         bookFileField.setText(bookfile);
     }
 
     @FXML
     private void handleOpenBook() throws IOException {
-         //если вы хотите запустить это на другой ОС, вам придется использовать Desktop API
-        //Runtime.getRuntime().exec("explorer.exe /select," + bookFileField.getText());
-        Process p = new ProcessBuilder("explorer.exe", "/select,"+bookFileField.getText()).start();
+        Process p = new ProcessBuilder("explorer.exe", "/select," + bookFileField.getText()).start();
     }
-
-
-    //  @FXML
-  //  private void handleAddImg() throws IOException {
-  //      PDDocument document = PDDocument.load(new File("F:/Zaochka/DIPLOMstech.pdf"));
-  //      PDFRenderer pdfRenderer = new PDFRenderer(document);
-  //      for (int page = 0; page < document.getNumberOfPages(); ++page) {
-  //          BufferedImage bim = pdfRenderer.renderImageWithDPI(
-  //                  page, 300, ImageType.RGB);
-  //          ImageIOUtil.writeImage(
-  //                  bim, String.format("src/output/pdf-%d.%s", page + 1, extension), 300);
-  //      }
-  //      document.close();
-  //
-  //  }
-
-
-
 }

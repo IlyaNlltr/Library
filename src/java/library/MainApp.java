@@ -26,8 +26,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.prefs.Preferences;
 
-//import main.java.library.view.RootLayoutController;
-
 public class MainApp extends Application {
 
     private Stage primaryStage;
@@ -36,7 +34,7 @@ public class MainApp extends Application {
     /**
      * The data as an observable list of Persons.
      */
-    private final ObservableList<Book> bookData = FXCollections.observableArrayList();      ////////////////////////////finale
+    private final ObservableList<Book> bookData = FXCollections.observableArrayList();
 
 
     /**
@@ -51,11 +49,6 @@ public class MainApp extends Application {
 
     }
 
-    /**
-     * Returns the data as an observable list of Persons.
-     *
-     * @return
-     */
     public ObservableList<Book> getBookData() {
         return bookData;
     }
@@ -66,11 +59,6 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Library");
         this.primaryStage.setWidth(1200);
         this.primaryStage.setHeight(600);
-
-
-
-        // Set the application icon.
-        //this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png")); /////////////////////////////////////////////todo
 
         initRootLayout();
 
@@ -131,14 +119,6 @@ public class MainApp extends Application {
         }
     }
 
-    /**
-     * Opens a dialog to edit details for the specified book. If the user
-     * clicks OK, the changes are saved into the provided book object and true
-     * is returned.
-     *
-     * @param book the book object to be edited
-     * @return true if the user clicked OK, false otherwise.
-     */
     public boolean showBookEditDialog(Book book) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -204,12 +184,6 @@ public class MainApp extends Application {
         }
     }
 
-    /**
-     * Loads person data from the specified file. The current person data will
-     * be replaced.
-     *
-     * @param file
-     */
     public void loadBookDataFromFile(File file) {
         try {
             JAXBContext context = JAXBContext
